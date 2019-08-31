@@ -1,0 +1,26 @@
+<app-sidebar *ngIf="view"></app-sidebar>
+<ul [class.open-sidebar]="view">
+  <li><a [class.active]="view" (click)="showSidebar()"><img src="assets/menu.svg" alt=""></a></li>
+</ul>
+
+<div class="main" [class.open-sidebar]="view">
+  <h2>Posts</h2>
+  <div class="loader-position" *ngIf="!postData">
+    <img src="assets/loader.gif">
+    <span>Please wait, loading data</span>
+  </div>
+  <table *ngIf="postData">
+    <tr>
+      <th>Post Id</th>
+      <th>User Id</th>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let post of postData">
+      <td>{{post.id}}</td>
+      <td>{{post.userId}}</td>
+      <td>{{post.title}}</td>
+      <td>{{post.body}}</td>
+    </tr>
+  </table>
+</div>
